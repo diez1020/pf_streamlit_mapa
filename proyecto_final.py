@@ -221,7 +221,7 @@ elif eleccion == 'Formulario':
     # Procesar y guardar
     archivo = 'registros.csv'
     if boton_enviar:
-        ubicacion = geolocalizador.geocode(direccion_completa)
+        ubicacion = geolocalizador.geocode(direccion_completa, timeout=10)
         conexion = sqlite3.connect('Quejas_ciudadanas.db')
         cursor = conexion.cursor()
         cursor.execute("INSERT INTO Quejas (Nombre, Apellido, Correo, Ciudad, Direccion, Telefono, Categoria, Descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (nombre, apellido, correo, ciudad, direccion_completa, telefono, categoria, descripcion))
